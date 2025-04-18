@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Satwik's Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(145deg, #0f0f0f, #1c1c1c);
+      color: #e0e0e0;
+      overflow-x: hidden;
+      transition: all 0.3s ease;
+    }
+
+    header {
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      text-align: center;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    header nav ul {
+      list-style: none;
+    }
+
+    header nav ul li {
+      display: inline-block;
+      margin: 0 20px;
+    }
+
+    header nav ul li a {
+      text-decoration: none;
+      color: #80d8ff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    header nav ul li a:hover {
+      color: #ff6ec4;
+    }
+
+    section {
+      padding: 80px 30px;
+      max-width: 1100px;
+      margin: auto;
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 700;
+      color: #00e5ff;
+    }
+
+    p {
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #cfcfcf;
+    }
+
+    #home {
+      text-align: center;
+      background: linear-gradient(145deg, #1a237e, #0d47a1);
+      padding: 120px 20px;
+      border-radius: 0 0 30px 30px;
+      color: #ffffff;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    #about, #projects, #contact {
+      background: #121212;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      margin: 40px 0;
+      padding: 50px;
+      animation: slideUp 1.2s ease-in-out;
+    }
+
+    #about .about-content {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    #about img {
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .project-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .project-card {
+      background: #1e1e1e;
+      border-radius: 15px;
+      padding: 20px;
+      width: 45%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .project-card a {
+      display: inline-block;
+      margin-top: 10px;
+      background: linear-gradient(to right, #00bcd4, #ff6ec4);
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .project-card a:hover {
+      background: linear-gradient(to right, #ff6ec4, #00bcd4);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    input, textarea {
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #00bcd4;
+      background: #1c1c1c;
+      color: #fff;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #ff6ec4;
+      outline: none;
+      box-shadow: 0 0 5px #ff6ec4;
+    }
+
+    button {
+      padding: 14px;
+      font-size: 16px;
+      background: linear-gradient(to right, #00bcd4, #ff6ec4);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #ff6ec4, #00bcd4);
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      color: #fff;
+      background: #0d0d0d;
+      border-top: 1px solid #333;
+      border-radius: 20px 20px 0 0;
+    }
+
+    #scrollTopBtn, #darkModeToggle {
+      position: fixed;
+      right: 20px;
+      padding: 10px;
+      font-size: 20px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    #scrollTopBtn {
+      bottom: 60px;
+      display: none;
+      background: #00bcd4;
+      color: #fff;
+    }
+
+    #darkModeToggle {
+      bottom: 20px;
+      background: #ff6ec4;
+      color: #fff;
+    }
+
+    body.light-mode {
+      background: #f9f9f9;
+      color: #121212;
+    }
+
+    body.light-mode header,
+    body.light-mode section,
+    body.light-mode footer {
+      background: #ffffff;
+      color: #000;
+    }
+
+    /* Animations */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideUp { from { transform: translateY(60px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    @media (max-width: 768px) {
+      #about .about-content { flex-direction: column; text-align: center; }
+      .project-card { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" data-aos="fade-in">
+    <h1>Welcome to My Portfolio</h1>
+    <p>I’m B. Satwik Reddy, a passionate CSE student and web developer.</p>
+  </section>
+
+  <section id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <img src="C:\Users\satwi\Downloads\img.jpg (1).jpg" alt="Satwik">
+      <div>
+        <p>I’m B. Satwik Reddy, a 2nd-year B.Tech CSE student at SRM University, AP. I love building visually beautiful and functionally effective web applications.</p>
+        <p>My expertise includes HTML, CSS, JavaScript, React, and PHP. I’m also diving deep into backend technologies like Node.js and MongoDB, aiming to become a full-stack developer.</p>
+        <p>Problem-solving and clean code are my strong suits, and I enjoy taking on challenges that push me to grow as a developer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" data-aos="fade-up">
+    <h2>My Projects</h2>
+    <div class="project-list">
+      <div class="project-card">
+        <img src="C:\Users\satwi\Downloads\GitHub-Logo.png">
+        <h3>GitHub Profile</h3>
+        <p>A modern personal website built with HTML, CSS, and JS to showcase my work.</p>
+        <a href="https://github.com/Satwik47" target="_blank">View Project</a>
+      </div>
+      <div class="project-card">
+        <img src="C:\Users\satwi\Downloads\LinkedIn_logo_initials.png" alt="LinkedIn">
+        <h3>LinkedIn Profile</h3>
+        <p>A platform where I network, share updates, and connect with tech professionals.</p>
+        <a href="https://www.linkedin.com/in/satwik-reddy-462072291" target="_blank">View Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" data-aos="zoom-in">
+    <h2>Contact Me</h2>
+    <form action="contact.php" method="post">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Satwik Reddy</p>
+  </footer>
+
+  <!-- Scroll + Dark Mode Buttons -->
+  <button id="scrollTopBtn" title="Go to top">↑</button>
+  <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
+
+  <!-- AOS + Custom JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = () => {
+      scrollBtn.style.display = (document.documentElement.scrollTop > 100) ? "block" : "none";
+    };
+    scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const darkToggle = document.getElementById("darkModeToggle");
+    darkToggle.onclick = () => {
+      document.body.classList.toggle("light-mode");
+      darkToggle.textContent = document.body.classList.contains("light-mode") ? "🌞" : "🌙";
+    };
+
+    document.querySelector("form").addEventListener("submit", function (e) {
+      const name = this.name.value.trim();
+      const email = this.email.value.trim();
+      const message = this.message.value.trim();
+      if (!name || !email || !message) {
+        e.preventDefault();
+        alert("Please fill in all fields.");
+      }
+    });
+  </script>
+
+</body>
+</html>
